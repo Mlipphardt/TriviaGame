@@ -11,6 +11,43 @@ function clickOff(){
     $("#answerD").off("click");
 }
 
+function question1(){
+    
+    $("#question").text("Which of the following directed the Silence of the Lambs?")
+    $("#answerA").text("Anthony Hopkins")
+    $("#answerB").text("Johnny Depp")
+    $("#answerC").text("Jonathan Demme")
+    $("#answerD").text("Goldie Hann")
+
+    setTimeout(question2, 30000);
+   
+    $("#answerA").on("click", function(){
+        alert("Incorrect!")
+        incorrectAnswers++;
+        question2();
+        clearTimeout();
+    })
+    $("#answerB").on("click", function(){
+        alert("Incorrect!")
+        incorrectAnswers++;
+        question2();
+        clearTimeout();
+    })
+    $("#answerC").on("click", function(){
+        alert("Correct!")
+        correctAnswers++;
+        question2();
+        clearTimeout();
+    })
+    $("#answerD").on("click", function(){
+        alert("Incorrect!")
+        incorrectAnswers++;
+        question2();
+        clearTimeout();
+    })
+
+}
+
 //Deactivates question1 click events, updates text and click events for question 2.
 function question2(){
     clickOff();
@@ -20,25 +57,31 @@ function question2(){
     $("#answerC").text("Titanic")
     $("#answerD").text("Avenger's Endgame")
 
+    setTimeout(question3, 30000)
+
     $("#answerA").on("click", function(){
         alert("Correct!")
         correctAnswers++;
         question3();
+        clearTimeout();
     })
     $("#answerB").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question3();
+        clearTimeout();
     })
     $("#answerC").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question3();
+        clearTimeout();
     })
     $("#answerD").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question3();
+        clearTimeout();
     })
 
 
@@ -53,25 +96,31 @@ function question3(){
     $("#answerC").text("Alice in Wonderland")
     $("#answerD").text("Batman")
 
+    setTimeout(question4, 30000)
+
     $("#answerA").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question4();
+        clearTimeout();
     })
     $("#answerB").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question4();
+        clearTimeout();
     })
     $("#answerC").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question4();
+        clearTimeout();
     })
     $("#answerD").on("click", function(){
         alert("Correct!")
         correctAnswers++;
         question4();
+        clearTimeout();
     })
 
 };
@@ -85,25 +134,31 @@ function question4(){
     $("#answerC").text("Laura Dern")
     $("#answerD").text("Susan Sarandon")
 
+    setTimeout(question5, 30000)
+ 
     $("#answerA").on("click", function(){
         alert("Correct!")
         correctAnswers++;
         question5();
+        clearTimeout();
     })
     $("#answerB").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question5();
+        clearTimeout();
     })
     $("#answerC").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question5();
+        clearTimeout();
     })
     $("#answerD").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question5();
+        clearTimeout();
     })
 
 };
@@ -113,29 +168,35 @@ function question5(){
     clickOff();
     $("#question").text("Which was the first (and only) foreign animated film to win the Academy Award for Best Animated Feature?")
     $("#answerA").text("Wallace & Gromit: The Curse of the Were-Rabbit (2005)")
-    $("#answerB").text("Spirited Away (2001) ")
+    $("#answerB").text("Spirited Away (2001)")
     $("#answerC").text("Grave of the Fireflies (1988)")
     $("#answerD").text("Fantastic Planet (1973)")
+
+    setTimeout(question6, 30000)
 
     $("#answerA").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question6();
+        clearTimeout();
     })
     $("#answerB").on("click", function(){
         alert("Correct!")
         correctAnswers++;
         question6();
+        clearTimeout();
     })
     $("#answerC").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question6();
+        clearTimeout();
     })
     $("#answerD").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question6();
+        clearTimeout();
     })
 
 }
@@ -149,25 +210,31 @@ function question6(){
     $("#answerC").text("Memento (2002)")
     $("#answerD").text("Doodlebug (1997)")
 
+    setTimeout(question7, 30000)
+
     $("#answerA").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question7();
+        clearTimeout();
     })
     $("#answerB").on("click", function(){
         alert("Correct!")
         correctAnswers++;
         question7();
+        clearTimeout();
     })
     $("#answerC").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question7();
+        clearTimeout();
     })
     $("#answerD").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question7();
+        clearTimeout();
     })
 
 };
@@ -181,25 +248,31 @@ function question7(){
     $("#answerC").text("Jon Voight")
     $("#answerD").text("Tom Sizemore")
 
+    setTimeout(question8, 30000)
+
     $("#answerA").on("click", function(){
         alert("Correct!")
         correctAnswers++;
         question8();
+        clearTimeout();
     })
     $("#answerB").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question8();
+        clearTimeout();
     })
     $("#answerC").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question8();
+        clearTimeout();
     })
     $("#answerD").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question8();
+        clearTimeout();
     })
 
 };
@@ -213,25 +286,32 @@ function question8(){
     $("#answerC").text("Michael Eisner")
     $("#answerD").text("Brad Bird")
 
+    setTimeout(question9, 30000)
+
+
     $("#answerA").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question9();
+        clearTimeout();
     })
     $("#answerB").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question9();
+        clearTimeout();
     })
     $("#answerC").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question9();
+        clearTimeout();
     })
     $("#answerD").on("click", function(){
         alert("Correct!")
         correctAnswers++;
         question9();
+        clearTimeout();
     })
 
 };
@@ -245,25 +325,31 @@ function question9(){
     $("#answerC").text("Jodie Foster")
     $("#answerD").text("Lulu Wang")
 
+    setTimeout(question10, 30000)
+
     $("#answerA").on("click", function(){
         alert("Correct!")
         correctAnswers++;
         question10();
+        clearTimeout();
     })
     $("#answerB").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question10();
+        clearTimeout();
     })
     $("#answerC").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question10();
+        clearTimeout();
     })
     $("#answerD").on("click", function(){
         alert("Incorrect!")
         incorrectAnswers++;
         question10();
+        clearTimeout();
     })
 
 };
@@ -304,38 +390,14 @@ function question10(){
 $("#Start").on("click", function(){
 
     $("#Start").hide();
-    $("#question").text("Which of the following directed the Silence of the Lambs?")
-    $("#answerA").text("Anthony Hopkins")
-    $("#answerB").text("Johnny Depp")
-    $("#answerC").text("Jonathan Demme")
-    $("#answerD").text("Goldie Hann")
+    question1()
 
-  
 
 })
 
 
 //Question 1 click events
-$("#answerA").on("click", function(){
-    alert("Incorrect!")
-    incorrectAnswers++;
-    question2();
-})
-$("#answerB").on("click", function(){
-    alert("Incorrect!")
-    incorrectAnswers++;
-    question2();
-})
-$("#answerC").on("click", function(){
-    alert("Correct!")
-    correctAnswers++;
-    question2();
-})
-$("#answerD").on("click", function(){
-    alert("Incorrect!")
-    incorrectAnswers++;
-    question2();
-})
+
 
 // //Question 2 click events
 // $("#2answerA").on("click", function(){
