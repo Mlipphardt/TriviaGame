@@ -7,9 +7,10 @@ let time = 0
 
 
 function timerReset(){
+    clearInterval(timerInterval);
     time = 30
     $("#countdown").text("Time Remaining: " + time + " seconds")
-}
+    }
 
 function countdown(){
     $("#countdown").text("Time Remaining: " + time + " seconds")
@@ -38,9 +39,8 @@ function question1(){
 
     timerInterval = setInterval(countdown, 1000)
    
-    setTimeout(question2, 30000);
+    setTimeout(question2, 31000);
    
-    timerInterval
    
     $("#answerA").on("click", function(){
         alert("Incorrect!")
@@ -78,7 +78,11 @@ function question2(){
     $("#answerC").text("Titanic")
     $("#answerD").text("Avenger's Endgame")
 
-    setTimeout(question3, 30000)
+    timerReset();
+
+    timerInterval = setInterval(countdown, 1000)
+
+    setTimeout(question3, 31000)
 
     $("#answerA").on("click", function(){
         alert("Correct!")
@@ -117,7 +121,11 @@ function question3(){
     $("#answerC").text("Alice in Wonderland")
     $("#answerD").text("Batman")
 
-    setTimeout(question4, 30000)
+    timerReset();
+
+    timerInterval = setInterval(countdown, 1000)
+
+    setTimeout(question4, 31000)
 
     $("#answerA").on("click", function(){
         alert("Incorrect!")
@@ -155,7 +163,11 @@ function question4(){
     $("#answerC").text("Laura Dern")
     $("#answerD").text("Susan Sarandon")
 
-    setTimeout(question5, 30000)
+    timerReset();
+
+    timerInterval = setInterval(countdown, 1000)
+
+    setTimeout(question5, 31000)
  
     $("#answerA").on("click", function(){
         alert("Correct!")
@@ -193,7 +205,11 @@ function question5(){
     $("#answerC").text("Grave of the Fireflies (1988)")
     $("#answerD").text("Fantastic Planet (1973)")
 
-    setTimeout(question6, 30000)
+    timerReset();
+
+    timerInterval = setInterval(countdown, 1000)
+
+    setTimeout(question6, 31000)
 
     $("#answerA").on("click", function(){
         alert("Incorrect!")
@@ -231,7 +247,11 @@ function question6(){
     $("#answerC").text("Memento (2002)")
     $("#answerD").text("Doodlebug (1997)")
 
-    setTimeout(question7, 30000)
+    timerReset();
+
+    timerInterval = setInterval(countdown, 1000)
+
+    setTimeout(question7, 31000)
 
     $("#answerA").on("click", function(){
         alert("Incorrect!")
@@ -269,7 +289,11 @@ function question7(){
     $("#answerC").text("Jon Voight")
     $("#answerD").text("Tom Sizemore")
 
-    setTimeout(question8, 30000)
+    timerReset();
+
+    timerInterval = setInterval(countdown, 1000)
+
+    setTimeout(question8, 31000)
 
     $("#answerA").on("click", function(){
         alert("Correct!")
@@ -307,7 +331,11 @@ function question8(){
     $("#answerC").text("Michael Eisner")
     $("#answerD").text("Brad Bird")
 
-    setTimeout(question9, 30000)
+    timerReset();
+
+    timerInterval = setInterval(countdown, 1000)
+
+    setTimeout(question9, 31000)
 
 
     $("#answerA").on("click", function(){
@@ -346,7 +374,11 @@ function question9(){
     $("#answerC").text("Jodie Foster")
     $("#answerD").text("Lulu Wang")
 
-    setTimeout(question10, 30000)
+    timerReset();
+
+    timerInterval = setInterval(countdown, 1000)
+
+    setTimeout(question10, 3100)
 
     $("#answerA").on("click", function(){
         alert("Correct!")
@@ -383,6 +415,10 @@ function question10(){
     $("#answerB").text("Christopher Nolan")
     $("#answerC").text("Martin Scorsese")
     $("#answerD").text("M. Night Shyamalan")
+
+    timerReset();
+
+    timerInterval = setInterval(countdown, 1000)
 
     $("#answerA").on("click", function(){
         alert("Incorrect!")
