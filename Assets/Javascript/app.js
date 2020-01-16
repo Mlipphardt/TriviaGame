@@ -1,21 +1,93 @@
-
 //Variables to hold correct and incorrect answers for display at end
 let correctAnswers = 0;
 let incorrectAnswers = 0;
 let timerInterval;
-let time = 0
+let time = 0;
+let questionCounter = 0;
+let isCorrect = false;
+let answerRevealArray = ["Incorrect! The right answer was: Johnathan Demme", "Incorrect! 'Gone with the Wind' holds the record!", "Sorry, the answer was 'Batman!' A monumental film which laid the foundations for the modern superhero blockbuster.", "Michael Clarke Duncan was the star of 'The Green Mile!'", "The answer was 'Spirited Away' by the legendary director Hayoa Miyazaki.", "'Batman Returns' was directed by Tim Burton. You might have been thinking of 'The Dark Knight,' or 'The Dark Knight Rises!'", "Al Pacino plays Vincent Hanna in Michael Mann's hit 'Heat!'", "Animated director Brad Bird is known for his work on 'The Incredibles,' 'Ratatouille,' and many other beloved classics.", "Incorrect! The answer was Penny Marshal.", "Martin Scorsese directed 'The Irishman' after making a deal with Netflix!"]
 
+function answerReveal(){
+    clearTimeout(timesup);
+    clearInterval(timerInterval);
+    time = 5
+    $("#countdown").text("Time Remaining: " + time + " seconds")
+    timerInterval = setInterval(countdown, 1000)
+    //Sets answer reveal page to automatically go to next question in ten seconds
+    if (questionCounter == 0){
+        setTimeout(question2, 5000);
+    } else if (questionCounter == 1){
+        setTimeout(question3, 5000);
+    } else if (questionCounter == 2){
+        setTimeout(question4, 5000);
+    } else if (questionCounter == 3){
+        setTimeout(question5, 5000);
+    } else if (questionCounter == 4){
+        setTimeout(question6, 5000);
+    } else if (questionCounter == 5){
+        setTimeout(question7, 5000);
+    } else if (questionCounter == 6){
+        setTimeout(question8, 5000);
+    } else if (questionCounter == 7){
+        setTimeout(question9, 5000);
+    } else if (questionCounter == 8){
+        setTimeout(question10, 5000);
+    } else if (questionCounter == 9){
+        setTimeout(showResults, 5000);
+    }
+    clickOff();
+    $("#answerA").text("");
+    $("#answerB").text("");
+    $("#answerC").text("");
+    $("#answerD").text("");
+
+    if(!isCorrect){
+        $("#question").text(answerRevealArray[questionCounter])
+    } else {
+        $("#question").text("Correct!")
+    };
+
+    questionCounter++;
+    isCorrect = false;
+
+};
+
+function timeoutAnswerReveal(){
+    incorrectAnswers++;
+    answerReveal();
+};
+
+function addCorrect(){
+    correctAnswers++
+    isCorrect = true;
+};
+
+function showResults(){
+    alert("All done!")
+    $("#question").text("Finished!");
+    $("#answerA").text("Correct: " + correctAnswers);
+    $("#answerB").text("Incorrect: " + incorrectAnswers);
+    $("#answerC").text("Your final score is: " + (correctAnswers/10));
+    $("#answerD").text("");
+    Reset = $("<button>");
+    $("#answerD").append(Reset);
+    $(Reset).text("Play again?");
+    $(Reset).on("click", function(){
+        $("#Start").show();
+        $(Reset).remove();
+    })
+};
 
 function timerReset(){
     clearInterval(timerInterval);
     time = 30
     $("#countdown").text("Time Remaining: " + time + " seconds")
-    }
+};
 
 function countdown(){
-    $("#countdown").text("Time Remaining: " + time + " seconds")
     time--;
-}
+    $("#countdown").text("Time Remaining: " + time + " seconds")
+};
 
 //Function to remove click events for previous answers from answer choices, so that new correct and incorrect answers can be assigned.
 function clickOff(){
@@ -23,48 +95,37 @@ function clickOff(){
     $("#answerB").off("click");
     $("#answerC").off("click");
     $("#answerD").off("click");
-}
-
-
+};
 
 function question1(){
     
-    $("#question").text("Which of the following directed the Silence of the Lambs?")
-    $("#answerA").text("Anthony Hopkins")
-    $("#answerB").text("Johnny Depp")
-    $("#answerC").text("Jonathan Demme")
-    $("#answerD").text("Goldie Hann")
+    $("#question").text("Which of the following directed the Silence of the Lambs?");
+    $("#answerA").text("Anthony Hopkins");
+    $("#answerB").text("Johnny Depp");
+    $("#answerC").text("Jonathan Demme");
+    $("#answerD").text("Goldie Hann");
    
     timerReset();
 
-    timerInterval = setInterval(countdown, 1000)
+    timerInterval = setInterval(countdown, 1000);
    
-    setTimeout(question2, 31000);
-   
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
    
     $("#answerA").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question2();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerB").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question2();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerC").on("click", function(){
-        alert("Correct!")
-        correctAnswers++;
-        question2();
-        clearTimeout();
+        addCorrect();
+        answerReveal();
     })
     $("#answerD").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question2();
-        clearTimeout();
+        answerReveal();
     })
 
 }
@@ -78,78 +139,65 @@ function question2(){
     $("#answerC").text("Titanic")
     $("#answerD").text("Avenger's Endgame")
 
+    clearTimeout();
+
     timerReset();
 
     timerInterval = setInterval(countdown, 1000)
 
-    setTimeout(question3, 31000)
+    setTimeout(answerReveal, 30000)
 
     $("#answerA").on("click", function(){
-        alert("Correct!")
-        correctAnswers++;
-        question3();
-        clearTimeout();
+        addCorrect();
+        answerReveal();
     })
     $("#answerB").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question3();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerC").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question3();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerD").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question3();
-        clearTimeout();
+        answerReveal();
     })
-
 
 }
 
 function question3(){
 
     clickOff();
-    $("#question").text("What is Director Tim Burton's highest grossing film?")
-    $("#answerA").text("The Nightmare Before Christmas")
-    $("#answerB").text("Edward Scissorhands")
-    $("#answerC").text("Alice in Wonderland")
-    $("#answerD").text("Batman")
+    $("#question").text("What is Director Tim Burton's highest grossing film?");
+    $("#answerA").text("The Nightmare Before Christmas");
+    $("#answerB").text("Edward Scissorhands");
+    $("#answerC").text("Alice in Wonderland");
+    $("#answerD").text("Batman");
+
+    clearTimeout(timesup);
 
     timerReset();
 
-    timerInterval = setInterval(countdown, 1000)
+    timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(question4, 31000)
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
 
     $("#answerA").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question4();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerB").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question4();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerC").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question4();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerD").on("click", function(){
-        alert("Correct!")
-        correctAnswers++;
-        question4();
-        clearTimeout();
+        addCorrect();
+        answerReveal();
     })
 
 };
@@ -157,41 +205,35 @@ function question3(){
 function question4(){
 
     clickOff();
-    $("#question").text("Which of the following starred in the Green Mile (1999)?")
-    $("#answerA").text("Michael Clarke Duncan")
-    $("#answerB").text("Harrison Ford")
-    $("#answerC").text("Laura Dern")
-    $("#answerD").text("Susan Sarandon")
+    $("#question").text("Which of the following starred in 'The Green Mile' (1999)?");
+    $("#answerA").text("Michael Clarke Duncan");
+    $("#answerB").text("Harrison Ford");
+    $("#answerC").text("Laura Dern");
+    $("#answerD").text("Susan Sarandon");
+
+    clearTimeout(timesup);
 
     timerReset();
 
     timerInterval = setInterval(countdown, 1000)
 
-    setTimeout(question5, 31000)
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
  
     $("#answerA").on("click", function(){
-        alert("Correct!")
-        correctAnswers++;
-        question5();
-        clearTimeout();
+        addCorrect();
+        answerReveal();
     })
     $("#answerB").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question5();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerC").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question5();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerD").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question5();
-        clearTimeout();
+        answerReveal();
     })
 
 };
@@ -199,41 +241,35 @@ function question4(){
 function question5(){
 
     clickOff();
-    $("#question").text("Which was the first (and only) foreign animated film to win the Academy Award for Best Animated Feature?")
-    $("#answerA").text("Wallace & Gromit: The Curse of the Were-Rabbit (2005)")
-    $("#answerB").text("Spirited Away (2001)")
-    $("#answerC").text("Grave of the Fireflies (1988)")
-    $("#answerD").text("Fantastic Planet (1973)")
+    $("#question").text("Which was the first (and only) foreign animated film to win the Academy Award for Best Animated Feature?");
+    $("#answerA").text("Wallace & Gromit: The Curse of the Were-Rabbit (2005)");
+    $("#answerB").text("Spirited Away (2001)");
+    $("#answerC").text("Grave of the Fireflies (1988)");
+    $("#answerD").text("Fantastic Planet (1973)");
+
+    clearTimeout();
 
     timerReset();
 
-    timerInterval = setInterval(countdown, 1000)
+    timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(question6, 31000)
+    setTimeout(answerReveal, 30000);
 
     $("#answerA").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question6();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerB").on("click", function(){
-        alert("Correct!")
-        correctAnswers++;
-        question6();
-        clearTimeout();
+        addCorrect();
+        answerReveal();
     })
     $("#answerC").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question6();
-        clearTimeout();
+        answerReveal();
     })
     $("#answerD").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question6();
-        clearTimeout();
+        answerReveal();
     })
 
 }
@@ -241,126 +277,117 @@ function question5(){
 function question6(){
 
     clickOff();
-    $("#question").text("Which of the following did Christopher Nolan NOT direct?")
-    $("#answerA").text("Inception (2010)")
-    $("#answerB").text("Batman Returns (1992)")
-    $("#answerC").text("Memento (2002)")
-    $("#answerD").text("Doodlebug (1997)")
+    $("#question").text("Which of the following did Christopher Nolan NOT direct?");
+    $("#answerA").text("Inception (2010)");
+    $("#answerB").text("Batman Returns (1992)");
+    $("#answerC").text("Memento (2002)");
+    $("#answerD").text("Doodlebug (1997)");
+
+    clearTimeout();
 
     timerReset();
 
-    timerInterval = setInterval(countdown, 1000)
+    timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(question7, 31000)
+    setTimeout(answerReveal, 30000);
 
     $("#answerA").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question7();
-        clearTimeout();
-    })
+        answerReveal();
+    });
+    
     $("#answerB").on("click", function(){
-        alert("Correct!")
-        correctAnswers++;
-        question7();
-        clearTimeout();
-    })
+        addCorrect();
+        answerReveal();
+    });
+
     $("#answerC").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question7();
-        clearTimeout();
-    })
+        answerReveal();
+    });
+    
     $("#answerD").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question7();
-        clearTimeout();
-    })
+        answerReveal();
+    });
 
 };
 
 function question7(){
 
     clickOff();
-    $("#question").text("Which character does Al Pacino portray in Heat (1995)?")
-    $("#answerA").text("Vincent Hanna")
-    $("#answerB").text("Neil McCauley")
-    $("#answerC").text("Jon Voight")
-    $("#answerD").text("Tom Sizemore")
+    $("#question").text("Which character does Al Pacino portray in Heat (1995)?");
+    $("#answerA").text("Vincent Hanna");
+    $("#answerB").text("Neil McCauley");
+    $("#answerC").text("Jon Voight");
+    $("#answerD").text("Tom Sizemore");
+
+    clearTimeout();
 
     timerReset();
 
-    timerInterval = setInterval(countdown, 1000)
+    timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(question8, 31000)
+    setTimeout(answerReveal, 30000);
 
     $("#answerA").on("click", function(){
-        alert("Correct!")
-        correctAnswers++;
-        question8();
-        clearTimeout();
-    })
+        addCorrect();
+        answerReveal();
+    });
+
     $("#answerB").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question8();
-        clearTimeout();
-    })
+        answerReveal();
+    });
+    
     $("#answerC").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question8();
-        clearTimeout();
-    })
+        answerReveal();
+    });
+    
     $("#answerD").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question8();
-        clearTimeout();
-    })
+        answerReveal();
+    });
 
 };
 
 function question8(){
 
     clickOff();
-    $("#question").text("Which of the following directed features including 'The Incredibles' (2004) and 'Ratatouille' (2007)?")
-    $("#answerA").text("Genndy Tartakovsky")
-    $("#answerB").text("Don Bluth")
-    $("#answerC").text("Michael Eisner")
-    $("#answerD").text("Brad Bird")
+    $("#question").text("Which of the following directed features including 'The Incredibles' (2004) and 'Ratatouille' (2007)?");
+    $("#answerA").text("Genndy Tartakovsky");
+    $("#answerB").text("Don Bluth");
+    $("#answerC").text("Michael Eisner");
+    $("#answerD").text("Brad Bird");
+
+    clearTimeout();
 
     timerReset();
 
-    timerInterval = setInterval(countdown, 1000)
+    timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(question9, 31000)
+    setTimeout(answerReveal, 30000);
 
 
     $("#answerA").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question9();
-        clearTimeout();
-    })
+        answerReveal();
+    });
+
     $("#answerB").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question9();
-        clearTimeout();
-    })
+        answerReveal();
+    });
+
     $("#answerC").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question9();
-        clearTimeout();
-    })
+        answerReveal();
+    });
+
     $("#answerD").on("click", function(){
-        alert("Correct!")
-        correctAnswers++;
-        question9();
-        clearTimeout();
+        addCorrect();
+        answerReveal();
     })
 
 };
@@ -368,73 +395,77 @@ function question8(){
 function question9(){
 
     clickOff();
-    $("#question").text("Which of the following was the first female director to gross over $100 million at the box office?")
-    $("#answerA").text("Penny Marshall")
-    $("#answerB").text("Nancy Meyers")
-    $("#answerC").text("Jodie Foster")
-    $("#answerD").text("Lulu Wang")
+    $("#question").text("Which of the following was the first female director to gross over $100 million at the box office?");
+    $("#answerA").text("Penny Marshall");
+    $("#answerB").text("Nancy Meyers");
+    $("#answerC").text("Jodie Foster");
+    $("#answerD").text("Lulu Wang");
+
+    clearTimeout();
 
     timerReset();
 
-    timerInterval = setInterval(countdown, 1000)
+    timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(question10, 3100)
+    setTimeout(answerReveal, 30000);
 
     $("#answerA").on("click", function(){
-        alert("Correct!")
-        correctAnswers++;
-        question10();
-        clearTimeout();
-    })
+        addCorrect();
+        answerReveal();
+    });
+
     $("#answerB").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question10();
-        clearTimeout();
-    })
+        answerReveal();
+    });
+
     $("#answerC").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question10();
-        clearTimeout();
-    })
+        answerReveal();
+    });
+    
     $("#answerD").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
-        question10();
-        clearTimeout();
-    })
+        answerReveal();
+    });
 
 };
 
 function question10(){
 
     clickOff();
-    $("#question").text("Who directed the recent, critically acclaimed film 'The Irishman' (2019)?")
-    $("#answerA").text("Kevin Feige")
-    $("#answerB").text("Christopher Nolan")
-    $("#answerC").text("Martin Scorsese")
-    $("#answerD").text("M. Night Shyamalan")
+    $("#question").text("Who directed the recent, critically acclaimed film 'The Irishman' (2019)?");
+    $("#answerA").text("Kevin Feige");
+    $("#answerB").text("Christopher Nolan");
+    $("#answerC").text("Martin Scorsese");
+    $("#answerD").text("M. Night Shyamalan");
+
+    clearTimeout();
 
     timerReset();
 
-    timerInterval = setInterval(countdown, 1000)
+    timerInterval = setInterval(countdown, 1000);
 
+    setTimeout(showResults, 30000);
+    
     $("#answerA").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
+        showResults();
     })
+
     $("#answerB").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
+        showResults();
     })
+
     $("#answerC").on("click", function(){
-        alert("Correct!")
         correctAnswers++;
+        showResults();
     })
+
     $("#answerD").on("click", function(){
-        alert("Incorrect!")
         incorrectAnswers++;
+        showResults();
  })
 
 };
