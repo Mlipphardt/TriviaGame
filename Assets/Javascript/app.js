@@ -2,6 +2,19 @@
 //Variables to hold correct and incorrect answers for display at end
 let correctAnswers = 0;
 let incorrectAnswers = 0;
+let timerInterval;
+let time = 0
+
+
+function timerReset(){
+    time = 30
+    $("#countdown").text("Time Remaining: " + time + " seconds")
+}
+
+function countdown(){
+    $("#countdown").text("Time Remaining: " + time + " seconds")
+    time--;
+}
 
 //Function to remove click events for previous answers from answer choices, so that new correct and incorrect answers can be assigned.
 function clickOff(){
@@ -11,6 +24,8 @@ function clickOff(){
     $("#answerD").off("click");
 }
 
+
+
 function question1(){
     
     $("#question").text("Which of the following directed the Silence of the Lambs?")
@@ -18,8 +33,14 @@ function question1(){
     $("#answerB").text("Johnny Depp")
     $("#answerC").text("Jonathan Demme")
     $("#answerD").text("Goldie Hann")
+   
+    timerReset();
 
+    timerInterval = setInterval(countdown, 1000)
+   
     setTimeout(question2, 30000);
+   
+    timerInterval
    
     $("#answerA").on("click", function(){
         alert("Incorrect!")
