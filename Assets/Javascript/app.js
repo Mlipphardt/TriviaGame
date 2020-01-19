@@ -6,6 +6,8 @@ let time = 0;
 let questionCounter = 0;
 let isCorrect = false;
 let answerRevealArray = ["Incorrect! The right answer was: Johnathan Demme", "Incorrect! 'Gone with the Wind' holds the record!", "Sorry, the answer was 'Batman!' A monumental film which laid the foundations for the modern superhero blockbuster.", "Michael Clarke Duncan was the star of 'The Green Mile!'", "The answer was 'Spirited Away' by the legendary director Hayoa Miyazaki.", "'Batman Returns' was directed by Tim Burton. You might have been thinking of 'The Dark Knight,' or 'The Dark Knight Rises!'", "Al Pacino plays Vincent Hanna in Michael Mann's hit 'Heat!'", "Animated director Brad Bird is known for his work on 'The Incredibles,' 'Ratatouille,' and many other beloved classics.", "Incorrect! The answer was Penny Marshal.", "Martin Scorsese directed 'The Irishman' after making a deal with Netflix!"]
+let timesup;
+
 
 function answerReveal(){
     clearTimeout(timesup);
@@ -111,20 +113,29 @@ function question1(){
    
     timesup = setTimeout(timeoutAnswerReveal, 30000);
    
+
     $("#answerA").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerB").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerC").on("click", function(){
         addCorrect();
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerD").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
 
@@ -139,8 +150,6 @@ function question2(){
     $("#answerC").text("Titanic")
     $("#answerD").text("Avenger's Endgame")
 
-    clearTimeout();
-
     timerReset();
 
     timerInterval = setInterval(countdown, 1000)
@@ -149,18 +158,26 @@ function question2(){
 
     $("#answerA").on("click", function(){
         addCorrect();
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerB").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerC").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerD").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
 
@@ -175,8 +192,6 @@ function question3(){
     $("#answerC").text("Alice in Wonderland");
     $("#answerD").text("Batman");
 
-    clearTimeout(timesup);
-
     timerReset();
 
     timerInterval = setInterval(countdown, 1000);
@@ -185,18 +200,26 @@ function question3(){
 
     $("#answerA").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerB").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerC").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerD").on("click", function(){
         addCorrect();
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
 
@@ -211,8 +234,6 @@ function question4(){
     $("#answerC").text("Laura Dern");
     $("#answerD").text("Susan Sarandon");
 
-    clearTimeout(timesup);
-
     timerReset();
 
     timerInterval = setInterval(countdown, 1000)
@@ -221,18 +242,26 @@ function question4(){
  
     $("#answerA").on("click", function(){
         addCorrect();
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerB").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerC").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
     $("#answerD").on("click", function(){
         incorrectAnswers++;
+        clearTimeout(timesup);
+        timesup = null;
         answerReveal();
     })
 
