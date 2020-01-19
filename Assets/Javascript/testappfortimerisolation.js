@@ -155,7 +155,7 @@ function question2(){
 
     timerInterval = setInterval(countdown, 1000)
 
-    setTimeout(answerReveal, 30000)
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
 
     $("#answerA").on("click", function(){
         addCorrect();
@@ -283,7 +283,7 @@ function question5(){
 
     timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(answerReveal, 30000);
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
 
     $("#answerA").on("click", function(){
         incorrectAnswers++;
@@ -319,7 +319,7 @@ function question6(){
 
     timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(answerReveal, 30000);
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
 
     $("#answerA").on("click", function(){
         incorrectAnswers++;
@@ -358,7 +358,7 @@ function question7(){
 
     timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(answerReveal, 30000);
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
 
     $("#answerA").on("click", function(){
         addCorrect();
@@ -397,8 +397,7 @@ function question8(){
 
     timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(answerReveal, 30000);
-
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
 
     $("#answerA").on("click", function(){
         incorrectAnswers++;
@@ -437,8 +436,8 @@ function question9(){
 
     timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(answerReveal, 30000);
-
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
+    
     $("#answerA").on("click", function(){
         addCorrect();
         answerReveal();
