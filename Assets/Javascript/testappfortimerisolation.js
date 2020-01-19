@@ -69,7 +69,7 @@ function showResults(){
     $("#question").text("Finished!");
     $("#answerA").text("Correct: " + correctAnswers);
     $("#answerB").text("Incorrect: " + incorrectAnswers);
-    $("#answerC").text("Your final score is: " + (correctAnswers/10));
+    $("#answerC").text("Your final score is: " + ((correctAnswers * 10) + "%"))
     $("#answerD").text("");
     Reset = $("<button>");
     $("#answerD").append(Reset);
@@ -116,26 +116,18 @@ function question1(){
 
     $("#answerA").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerB").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerC").on("click", function(){
         addCorrect();
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerD").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
 
@@ -159,26 +151,18 @@ function question2(){
 
     $("#answerA").on("click", function(){
         addCorrect();
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerB").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerC").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerD").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
 
@@ -201,26 +185,18 @@ function question3(){
 
     $("#answerA").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerB").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerC").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerD").on("click", function(){
         addCorrect();
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
 
@@ -243,26 +219,18 @@ function question4(){
  
     $("#answerA").on("click", function(){
         addCorrect();
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerB").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerC").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
     $("#answerD").on("click", function(){
         incorrectAnswers++;
-        clearTimeout(timesup);
-        timesup = null;
         answerReveal();
     })
 
@@ -437,7 +405,7 @@ function question9(){
     timerInterval = setInterval(countdown, 1000);
 
     timesup = setTimeout(timeoutAnswerReveal, 30000);
-    
+
     $("#answerA").on("click", function(){
         addCorrect();
         answerReveal();
