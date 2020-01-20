@@ -5,9 +5,10 @@ let timerInterval;
 let time = 0;
 let questionCounter = 0;
 let isCorrect = false;
-let answerRevealArray = ["Incorrect! The right answer was: Johnathan Demme", "Incorrect! 'Gone with the Wind' holds the record!", "Sorry, the answer was 'Batman!' A monumental film which laid the foundations for the modern superhero blockbuster.", "Michael Clarke Duncan was the star of 'The Green Mile!'", "The answer was 'Spirited Away' by the legendary director Hayoa Miyazaki.", "'Batman Returns' was directed by Tim Burton. You might have been thinking of 'The Dark Knight,' or 'The Dark Knight Rises!'", "Al Pacino plays Vincent Hanna in Michael Mann's hit 'Heat!'", "Animated director Brad Bird is known for his work on 'The Incredibles,' 'Ratatouille,' and many other beloved classics.", "Incorrect! The answer was Penny Marshal.", "Martin Scorsese directed 'The Irishman' after making a deal with Netflix!"]
 let timesup;
-
+let answerRevealArray = ["Incorrect! The right answer was: Johnathan Demme", "Incorrect! 'Gone with the Wind' holds the record!", "Sorry, the answer was 'Batman!' A monumental film which laid the foundations for the modern superhero blockbuster.", "Michael Clarke Duncan was the star of 'The Green Mile!'", "The answer was 'Spirited Away' by the legendary director Hayoa Miyazaki.", "'Batman Returns' was directed by Tim Burton. You might have been thinking of 'The Dark Knight,' or 'The Dark Knight Rises!'", "Al Pacino plays Vincent Hanna in Michael Mann's hit 'Heat!'", "Animated director Brad Bird is known for his work on 'The Incredibles,' 'Ratatouille,' and many other beloved classics.", "Incorrect! The answer was Penny Marshal.", "Martin Scorsese directed 'The Irishman' after making a deal with Netflix!"]
+let answerImage = ["./assets/images/jonathan-demme-resized.jpg", "./assets/images/gone-with-the-wind-resized.jpg", "./assets/images/batman-resized.jpg", "./assets/images/michael-clarke-duncan-resized.jpg", "./assets/images/spirited-away-resized.jpg", "./assets/images/batman-returns-resized.jpg", "./assets/images/vincent-hanna-resized.jpg", "./assets/images/brad-bird-resized.jpg", "./assets/images/penny-marshal-resized.jpg", "./assets/images/martin-scorsese-resized.jpg"]
+let questionPicture;
 
 function answerReveal(){
     clearTimeout(timesup);
@@ -43,6 +44,9 @@ function answerReveal(){
     $("#answerC").text("");
     $("#answerD").text("");
 
+    questionPicture = $("<img class = 'img-fluid' " + "src =" + answerImage[questionCounter] + ">")
+    $("#answerB").append(questionPicture);
+
     if(!isCorrect){
         $("#question").text(answerRevealArray[questionCounter])
     } else {
@@ -65,7 +69,10 @@ function addCorrect(){
 };
 
 function showResults(){
-    alert("All done!")
+    $(questionPicture).remove();
+    clearTimeout(timesup);
+    timerReset();
+    $("#countdown").text("");
     $("#question").text("Finished!");
     $("#answerA").text("Correct: " + correctAnswers);
     $("#answerB").text("Incorrect: " + incorrectAnswers);
@@ -75,8 +82,17 @@ function showResults(){
     $("#answerD").append(Reset);
     $(Reset).text("Play again?");
     $(Reset).on("click", function(){
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        questionCounter = 0;
+        isCorrect = false;
         $("#Start").show();
         $(Reset).remove();
+        $("#question").text("");
+        $("#answerA").text("");
+        $("#answerB").text("");
+        $("#answerC").text("");
+        $("#countdown").text("");
     })
 };
 
@@ -100,7 +116,6 @@ function clickOff(){
 };
 
 function question1(){
-    
     $("#question").text("Which of the following directed the Silence of the Lambs?");
     $("#answerA").text("Anthony Hopkins");
     $("#answerB").text("Johnny Depp");
@@ -135,7 +150,7 @@ function question1(){
 
 //Deactivates question1 click events, updates text and click events for question 2.
 function question2(){
-    
+    $(questionPicture).remove();
     clickOff();
     $("#question").text("Which of the following holds the Box Office all-time earnings record when adjusted for inflation?")
     $("#answerA").text("Gone with the Wind")
@@ -169,13 +184,13 @@ function question2(){
 }
 
 function question3(){
-
+    $(questionPicture).remove();
     clickOff();
     $("#question").text("What is Director Tim Burton's highest grossing film?");
-    $("#answerA").text("The Nightmare Before Christmas");
-    $("#answerB").text("Edward Scissorhands");
-    $("#answerC").text("Alice in Wonderland");
-    $("#answerD").text("Batman");
+    $("#answerA").text("The Nightmare Before Christmas (1993)");
+    $("#answerB").text("Edward Scissorhands (1990)");
+    $("#answerC").text("Alice in Wonderland (2010)");
+    $("#answerD").text("Batman (1989)");
 
     timerReset();
 
@@ -203,7 +218,7 @@ function question3(){
 };
 
 function question4(){
-
+    $(questionPicture).remove();
     clickOff();
     $("#question").text("Which of the following starred in 'The Green Mile' (1999)?");
     $("#answerA").text("Michael Clarke Duncan");
@@ -237,7 +252,7 @@ function question4(){
 };
 
 function question5(){
-
+    $(questionPicture).remove();
     clickOff();
     $("#question").text("Which was the first (and only) foreign animated film to win the Academy Award for Best Animated Feature?");
     $("#answerA").text("Wallace & Gromit: The Curse of the Were-Rabbit (2005)");
@@ -273,7 +288,7 @@ function question5(){
 }
 
 function question6(){
-
+    $(questionPicture).remove();
     clickOff();
     $("#question").text("Which of the following did Christopher Nolan NOT direct?");
     $("#answerA").text("Inception (2010)");
@@ -312,7 +327,7 @@ function question6(){
 };
 
 function question7(){
-
+    $(questionPicture).remove();
     clickOff();
     $("#question").text("Which character does Al Pacino portray in Heat (1995)?");
     $("#answerA").text("Vincent Hanna");
@@ -351,7 +366,7 @@ function question7(){
 };
 
 function question8(){
-
+    $(questionPicture).remove();
     clickOff();
     $("#question").text("Which of the following directed features including 'The Incredibles' (2004) and 'Ratatouille' (2007)?");
     $("#answerA").text("Genndy Tartakovsky");
@@ -390,7 +405,7 @@ function question8(){
 };
 
 function question9(){
-
+    $(questionPicture).remove();
     clickOff();
     $("#question").text("Which of the following was the first female director to gross over $100 million at the box office?");
     $("#answerA").text("Penny Marshall");
@@ -429,40 +444,40 @@ function question9(){
 };
 
 function question10(){
-
+    $(questionPicture).remove();
     clickOff();
     $("#question").text("Who directed the recent, critically acclaimed film 'The Irishman' (2019)?");
     $("#answerA").text("Kevin Feige");
     $("#answerB").text("Christopher Nolan");
     $("#answerC").text("Martin Scorsese");
     $("#answerD").text("M. Night Shyamalan");
-
+    
     clearTimeout();
 
     timerReset();
 
     timerInterval = setInterval(countdown, 1000);
 
-    setTimeout(showResults, 30000);
+    timesup = setTimeout(timeoutAnswerReveal, 30000);
     
     $("#answerA").on("click", function(){
         incorrectAnswers++;
-        showResults();
+        answerReveal();
     })
 
     $("#answerB").on("click", function(){
         incorrectAnswers++;
-        showResults();
+        answerReveal();
     })
 
     $("#answerC").on("click", function(){
         correctAnswers++;
-        showResults();
+        answerReveal();
     })
 
     $("#answerD").on("click", function(){
         incorrectAnswers++;
-        showResults();
+        answerReveal();
  })
 
 };
