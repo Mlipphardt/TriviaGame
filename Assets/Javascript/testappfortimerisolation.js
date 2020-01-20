@@ -56,6 +56,11 @@ function answerReveal(){
 
 };
 
+function rotateImage(){
+    $("#questionImage").attr("src", answerImage[questionCounter]);
+    $("#questionImage").hide();
+}
+
 function timeoutAnswerReveal(){
     incorrectAnswers++;
     answerReveal();
@@ -119,8 +124,7 @@ function question1(){
     $("#answerB").text("Johnny Depp");
     $("#answerC").text("Jonathan Demme");
     $("#answerD").text("Goldie Hann");
-    $("#questionImage").attr("src", answerImage[questionCounter]);
-    $("#questionImage").hide();
+    rotateImage();
 
     timerReset();
 
@@ -158,7 +162,8 @@ function question2(){
     $("#answerD").text("Avenger's Endgame")
     $("#questionImage").attr("src", answerImage[questionCounter]);
     $("#questionImage").hide();
-
+    rotateImage();
+  
     timerReset();
 
     timerInterval = setInterval(countdown, 1000)
@@ -191,8 +196,7 @@ function question3(){
     $("#answerB").text("Edward Scissorhands (1990)");
     $("#answerC").text("Alice in Wonderland (2010)");
     $("#answerD").text("Batman (1989)");
-
-    $("#questionImage").hide();
+    rotateImage();
 
     timerReset();
 
@@ -226,8 +230,7 @@ function question4(){
     $("#answerB").text("Harrison Ford");
     $("#answerC").text("Laura Dern");
     $("#answerD").text("Susan Sarandon");
-
-    $("#questionImage").hide();
+    rotateImage();
 
     timerReset();
 
@@ -261,10 +264,7 @@ function question5(){
     $("#answerB").text("Spirited Away (2001)");
     $("#answerC").text("Grave of the Fireflies (1988)");
     $("#answerD").text("Fantastic Planet (1973)");
-
-    $("#questionImage").hide();
-
-    clearTimeout();
+    rotateImage();
 
     timerReset();
 
@@ -298,10 +298,7 @@ function question6(){
     $("#answerB").text("Batman Returns (1992)");
     $("#answerC").text("Memento (2002)");
     $("#answerD").text("Doodlebug (1997)");
-
-    $("#questionImage").hide();
-
-    clearTimeout();
+    rotateImage();
 
     timerReset();
 
@@ -338,10 +335,7 @@ function question7(){
     $("#answerB").text("Neil McCauley");
     $("#answerC").text("Jon Voight");
     $("#answerD").text("Tom Sizemore");
-
-    $("#questionImage").hide();
-
-    clearTimeout();
+    rotateImage();
 
     timerReset();
 
@@ -378,10 +372,7 @@ function question8(){
     $("#answerB").text("Don Bluth");
     $("#answerC").text("Michael Eisner");
     $("#answerD").text("Brad Bird");
-
-    $("#questionImage").hide();
-
-    clearTimeout();
+    rotateImage();
 
     timerReset();
 
@@ -418,10 +409,7 @@ function question9(){
     $("#answerB").text("Nancy Meyers");
     $("#answerC").text("Jodie Foster");
     $("#answerD").text("Lulu Wang");
-
-    $("#questionImage").hide();
-
-    clearTimeout();
+    rotateImage();
 
     timerReset();
 
@@ -458,10 +446,7 @@ function question10(){
     $("#answerB").text("Christopher Nolan");
     $("#answerC").text("Martin Scorsese");
     $("#answerD").text("M. Night Shyamalan");
-    
-    $("#questionImage").hide();
-
-    clearTimeout();
+    rotateImage();
 
     timerReset();
 
@@ -492,9 +477,6 @@ function question10(){
 };
 
 
-
-
-
 //Initiates game with question 1, hides itself
 $("#Start").on("click", function(){
 
@@ -504,24 +486,3 @@ $("#Start").on("click", function(){
 
 })
 
-
-//Question 1 click events
-
-
-// //Question 2 click events
-// $("#2answerA").on("click", function(){
-//     alert("Correct!")
-//     correctAnswers++;
-// })
-// $("#2answerB").on("click", function(){
-//     alert("Incorrect!")
-//     incorrectAnswers++;
-// })
-// $("#2answerC").on("click", function(){
-//     alert("Incorrect!")
-//     incorrectAnswers++;
-// })
-// $("#2answerD").on("click", function(){
-//     alert("Incorrect!")
-//     incorrectAnswers++;
-// })
