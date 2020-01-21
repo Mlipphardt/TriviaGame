@@ -81,8 +81,8 @@ function showResults(){
     $("#answerB").text("Incorrect: " + incorrectAnswers);
     $("#answerC").text("Your final score is: " + ((correctAnswers * 10) + "%"))
     $("#answerD").text("");
-    Reset = $("<button>");
-    $("#answerD").append(Reset);
+    Reset = $("<button class = 'btn btn-lg'>");
+    $(".jumbotron").append(Reset);
     $(Reset).text("Play again?");
     $(Reset).on("click", function(){
         correctAnswers = 0;

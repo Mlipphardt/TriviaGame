@@ -28,6 +28,11 @@ p{
     font-size: 1.5rem;
 }
 
+button{
+    background-color: purple;
+    color:darkred;
+}
+
 #backgroundwrapper{
 background-image: url("../images/hollywood\ red\ carpet\ 4.svg");
 width: 100%;
