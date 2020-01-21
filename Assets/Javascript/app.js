@@ -1,14 +1,22 @@
 //Variables to hold correct and incorrect answers for display at end
 let correctAnswers = 0;
 let incorrectAnswers = 0;
+//Countdown timer, and time to be shown to user
 let timerInterval;
 let time = 0;
+//Tracks which question the user is on, used to pull from arrays on answer reveal page
 let questionCounter = 0;
+//Flag which checks whether or not answer was correct
 let isCorrect = false;
+//Will be used in setTimeout for moving to answer reveal page
 let timesup;
+//Array to reveal correct answer if user is incorrect.
 let answerRevealArray = ["Incorrect! The right answer was: Johnathan Demme", "Incorrect! 'Gone with the Wind' holds the record!", "Sorry, the answer was 'Batman!' A monumental film which laid the foundations for the modern superhero blockbuster.", "Michael Clarke Duncan was the star of 'The Green Mile!'", "The answer was 'Spirited Away' by the legendary director Hayoa Miyazaki.", "'Batman Returns' was directed by Tim Burton. You might have been thinking of 'The Dark Knight,' or 'The Dark Knight Rises!'", "Al Pacino plays Vincent Hanna in Michael Mann's hit 'Heat!'", "Animated director Brad Bird is known for his work on 'The Incredibles,' 'Ratatouille,' and many other beloved classics.", "Incorrect! The answer was Penny Marshal.", "Martin Scorsese directed 'The Irishman' after making a deal with Netflix!"]
+
+//Contextually relevant images to go with the answer page
 let answerImage = ["./assets/images/jonathan-demme-resized.jpg", "./assets/images/gone-with-the-wind-resized.jpg", "./assets/images/batman-resized.jpg", "./assets/images/michael-clarke-duncan-resized.jpg", "./assets/images/spirited-away-resized.jpg", "./assets/images/batman-returns-resized.jpg", "./assets/images/vincent-hanna-resized.jpg", "./assets/images/brad-bird-resized.jpg", "./assets/images/penny-marshal-resized.jpg", "./assets/images/martin-scorsese-resized.jpg"]
 
+//Function to reveal answer
 function answerReveal(){
     clearTimeout(timesup);
     clearInterval(timerInterval);
