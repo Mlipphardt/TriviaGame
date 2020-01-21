@@ -45,6 +45,8 @@ function answerReveal(){
     } else if (questionCounter == 9){
         setTimeout(showResults, 5000);
     }
+
+    //Removes click events, clears text, shows image
     clickOff();
     $("#answerA").text("");
     $("#answerB").text("");
@@ -52,33 +54,38 @@ function answerReveal(){
     $("#answerD").text("");
     $("#questionImage").show();
 
-
+    //Updates answer text based on whether or not user got it right
     if(!isCorrect){
         $("#question").text(answerRevealArray[questionCounter])
     } else {
         $("#question").text("Correct!")
     };
 
+    //Progresses request, resets flag for whether or not user got it right
     questionCounter++;
     isCorrect = false;
 
 };
 
+//Prepares image for next reveal, then hides it
 function rotateImage(){
     $("#questionImage").attr("src", answerImage[questionCounter]);
     $("#questionImage").hide();
 }
 
+//Function shows answer and counts as incorrect if user takes over 30 seconds.
 function timeoutAnswerReveal(){
     incorrectAnswers++;
     answerReveal();
 };
 
+//Adds correct answers, flag for correct answer.
 function addCorrect(){
     correctAnswers++
     isCorrect = true;
 };
 
+//Shows results at end of game. Generates Reset button for game, then deletes it if clicked.
 function showResults(){
     $("#questionImage").hide();
     clearTimeout(timesup);
@@ -107,12 +114,14 @@ function showResults(){
     })
 };
 
+//Resets timer for countdown, displays to user.
 function timerReset(){
     clearInterval(timerInterval);
     time = 30
     $("#countdown").text("Time Remaining: " + time + " seconds")
 };
 
+//Counts down, displays to user.
 function countdown(){
     time--;
     $("#countdown").text("Time Remaining: " + time + " seconds")
@@ -125,6 +134,9 @@ function clickOff(){
     $("#answerC").off("click");
     $("#answerD").off("click");
 };
+
+
+//Functions for questions, each changes question text, adds new click events. I had ideas on how to change this, have the questions and answered generated from an array like I did with the answer reveals, but doing that and flagging different answers as correct and incorrect was tricky for me and I ran out of time.
 
 function question1(){
     $("#question").text("Which of the following directed the Silence of the Lambs?");
@@ -160,7 +172,7 @@ function question1(){
 
 }
 
-//Deactivates question1 click events, updates text and click events for question 2.
+//Deactivates question1 click events, updates text and click events for question 2. 
 function question2(){
     clickOff();
     $("#question").text("Which of the following holds the Box Office all-time earnings record when adjusted for inflation?")
